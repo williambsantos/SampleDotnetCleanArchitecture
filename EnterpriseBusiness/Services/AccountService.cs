@@ -26,6 +26,7 @@ public class AccountService : IAccountService
             throw new Exception("Invalid user!");
 
         var user = new Account(userName, password, roles, claims);
+        
 
         user.Validate();
 

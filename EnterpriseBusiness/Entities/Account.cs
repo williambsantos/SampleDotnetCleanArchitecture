@@ -51,10 +51,10 @@
         public void Validate()
         {
             if (string.IsNullOrEmpty(UserName))
-                throw new Exception("Username is required");
+                throw new DomainValidationException("Username is required");
 
             if (string.IsNullOrEmpty(PasswordHash))
-                throw new Exception("Password is required");
+                throw new DomainValidationException("Password is required");
         }
     }
 }
