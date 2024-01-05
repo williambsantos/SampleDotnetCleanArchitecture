@@ -9,14 +9,14 @@ namespace SampleDotnetCleanArchitecture.Controllers
     [Authorize]
     [ApiController]
     [Route("[controller]")]
-    public class ClientController : ControllerBase
+    public class ClientsController : ControllerBase
     {
         private readonly IClientApplication _clientApplication;
-        private readonly ILogger<ClientController> _logger;
+        private readonly ILogger<ClientsController> _logger;
 
-        public ClientController(
+        public ClientsController(
             IClientApplication clientApplication,
-            ILogger<ClientController> logger
+            ILogger<ClientsController> logger
             )
         {
             _clientApplication = clientApplication;

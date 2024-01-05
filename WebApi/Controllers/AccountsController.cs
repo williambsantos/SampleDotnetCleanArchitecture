@@ -8,14 +8,14 @@ namespace SampleDotnetCleanArchitecture.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountsController : ControllerBase
     {
         private readonly IAccountApplication _application;
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AccountsController> _logger;
 
-        public AccountController(
+        public AccountsController(
             IAccountApplication application,
-            ILogger<AccountController> logger
+            ILogger<AccountsController> logger
             )
         {
             _application = application;

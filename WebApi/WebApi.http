@@ -1,6 +1,54 @@
 @SampleDotnetCleanArchitecture_HostAddress = http://localhost:5185
 
-GET {{SampleDotnetCleanArchitecture_HostAddress}}/weatherforecast/
+GET {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/
+Accept: application/json
+
+###
+GET {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/{account_userName}
+Accept: application/json
+
+###
+
+POST {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/
+Accept: application/json
+
+###
+
+DELETE {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/{account_userName}
+Accept: application/json
+
+###
+
+POST {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/{account_userName}/claims/{claim_name}
+Accept: application/json
+
+###
+
+DELETE {{SampleDotnetCleanArchitecture_HostAddress}}/accounts/{userName}//{claim_name}
+Accept: application/json
+
+###
+
+GET {{SampleDotnetCleanArchitecture_HostAddress}}/clients/
+Accept: application/json
+
+###
+GET {{SampleDotnetCleanArchitecture_HostAddress}}/clients/{client_id}
+Accept: application/json
+
+###
+
+POST {{SampleDotnetCleanArchitecture_HostAddress}}/clients/
+Accept: application/json
+
+###
+
+PUT {{SampleDotnetCleanArchitecture_HostAddress}}/clients/{client_id}
+Accept: application/json
+
+###
+
+DELETE {{SampleDotnetCleanArchitecture_HostAddress}}/clients/{client_id}
 Accept: application/json
 
 ###

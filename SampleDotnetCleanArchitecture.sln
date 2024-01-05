@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Security", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.SqlServer", "Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{4557219E-CB5B-4C11-BD36-EF7C799EDF5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseBusiness.Tests", "Tests\EnterpriseBusiness.Tests\EnterpriseBusiness.Tests.csproj", "{FD6AAE9A-F16E-4DCF-9096-505D37A1341E}"
 EndProject
@@ -24,6 +24,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.SqlServer.Tests", "Tests\Infrastructure.SqlServer.Tests\Infrastructure.SqlServer.Tests.csproj", "{EC97E8BF-FFA2-4659-A0B7-FBA6FECB9027}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "Tests\WebApi.Tests\WebApi.Tests.csproj", "{D63D3085-9ED9-42E9-927F-ABC095ABF71A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{D4087261-0F6B-4CB3-B73C-A1A343442576}"
+	ProjectSection(SolutionItems) = preProject
+		Databases\01-DDL.sql = Databases\01-DDL.sql
+		Databases\docker-compose.yml = Databases\docker-compose.yml
+		Databases\README.md = Databases\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
