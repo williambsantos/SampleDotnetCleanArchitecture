@@ -10,12 +10,12 @@ namespace SampleDotnetCleanArchitecture.Infrastructure.Security
 {
     public class AccountSecurity : IAccountSecurity
     {
-        // Chave secreta (deve ser armazenada de forma segura em um ambiente de produção, por exemplo, em variáveis de ambiente)
-        private readonly string _key = "minha_chave_secreta_muito_segura";
+        private readonly string _secretKey;
         private readonly IPasswordHasher<Account> _passwordHasher;
 
-        public AccountSecurity(IPasswordHasher<Account> passwordHasher)
+        public AccountSecurity(IPasswordHasher<Account> passwordHasher, string secretKey)
         {
+            _secretKey = secretKey;
             _passwordHasher = passwordHasher;
         }
 
@@ -33,7 +33,7 @@ namespace SampleDotnetCleanArchitecture.Infrastructure.Security
         public AccountToken GenerateJwtToken(Account user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_key);
+            var key = Encoding.ASCII.GetBytes(_secretKey);
 
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, user.UserName));

@@ -16,6 +16,13 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = builder.Configuration["DATABASE_CONNECTION_STRING"];
+if (string.IsNullOrWhiteSpace(connectionString))
+    throw new ArgumentNullException("DATABASE_CONNECTION_STRING");
+
+// just for study. In production, use environment variables and secrets
+string secretKey = builder.Configuration["SECRET_KEY"];
+if (string.IsNullOrWhiteSpace(secretKey))
+    throw new ArgumentNullException("SECRET_KEY");
 
 builder.Logging.AddConsole();
 
@@ -31,7 +38,11 @@ builder.Services.AddScoped<IDbConnectionProject>(sp => new DbConnectionProject(c
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
-builder.Services.AddScoped<IAccountSecurity, AccountSecurity>();
+builder.Services.AddScoped<IAccountSecurity>(sp =>
+{
+    var service = sp.GetRequiredService<IPasswordHasher<Account>>();
+    return new AccountSecurity(service, secretKey);
+});
 
 builder.Services.AddSingleton<IPasswordHasher<Account>, PasswordHasher<Account>>();
 
@@ -44,7 +55,7 @@ builder.Services.AddAuthentication(x =>
 {
     x.RequireHttpsMetadata = false;
     x.SaveToken = true;
-    var key = Encoding.ASCII.GetBytes("minha_chave_secreta_muito_segura");
+    var key = Encoding.ASCII.GetBytes(secretKey);
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuerSigningKey = true,
