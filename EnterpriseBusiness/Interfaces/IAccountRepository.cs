@@ -6,7 +6,7 @@ namespace SampleDotnetCleanArchitecture.EnterpriseBusiness.Interfaces
     {
         Task<ICollection<Account>> ListAsync();
         Task<Account?> GetByNameAsync(string username);
-        Task<Account> CreateAsync(Account user);
+        Task CreateAsync(Account user);
         Task DeleteAsync(string userName);
         Task DeleteClaimFromUserAsync(string userName, AccountClaims claimName);
         Task AddClaimToUserAsync(string userName, AccountClaims claimName);

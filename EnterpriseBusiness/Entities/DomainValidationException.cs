@@ -15,9 +15,5 @@ namespace SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities
         public DomainValidationException(string? message, Exception? innerException) : base(message, innerException)
         {
         }
-
-        protected DomainValidationException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
     }
 }

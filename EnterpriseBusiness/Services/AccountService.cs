@@ -17,16 +17,15 @@ public class AccountService : IAccountService
     }
 
     public async Task<ICollection<Account>> ListAsync() => await _accountRepository.ListAsync();
-    public async Task<Account?> GetUserAsync(string username) => await _accountRepository.GetByNameAsync(username);
+    public async Task<Account?> GetAsync(string username) => await _accountRepository.GetByNameAsync(username);
 
-    public async Task<Account> CreateUserAsync(string userName, string password, ICollection<string>? roles, ICollection<AccountClaims>? claims)
+    public async Task<Account> CreateAsync(string userName, string password, ICollection<string>? roles, ICollection<AccountClaims>? claims)
     {
-        var existedUser = await GetUserAsync(userName);
+        var existedUser = await GetAsync(userName);
         if (existedUser != null)
             throw new Exception("Invalid user!");
 
         var user = new Account(userName, password, roles, claims);
-        
 
         user.Validate();
 
@@ -35,7 +34,6 @@ public class AccountService : IAccountService
         user.SetPassword(passwordHash);
 
         await _accountRepository.CreateAsync(user);
-        
         return user;
     }
 
@@ -49,14 +47,16 @@ public class AccountService : IAccountService
         return _accountSecurity.GenerateJwtToken(user);
     }
 
-    public async Task<AccountToken?> LoginAsync(string username, string password)
+    public async Task<AccountToken> LoginAsync(string username, string password)
     {
-        var user = await GetUserAsync(username);
-        if (user == null) return null;
+        var user = await GetAsync(username);
+        if (user == null)
+            throw new DomainValidationException("Invalid username or password");
 
         var result = _accountSecurity.VerifyHashedPassword(user, user.PasswordHash, password);
 
-        if (!result) return null;
+        if (!result)
+            throw new DomainValidationException("Invalid username or password");
 
         return _accountSecurity.GenerateJwtToken(user);
     }
