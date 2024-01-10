@@ -37,11 +37,11 @@
 
 ### Security and Compliance
 
-- **Authentication**: Use JWT tokens or OAuth to authenticate requests.
-- **Authorization**: Implement user-based roles and permissions.
+- **Authentication**: Use JWT tokens authenticate requests.
+- **Authorization**: Implement Policies based on Claims user claims.
 - **Logs**: Record activities of creation, update, and deletion for auditing purposes.
 
 ### Technical Considerations
 
-- **Database**: Choose a suitable DBMS (e.g., PostgreSQL, MySQL).
+- **Database**: Use SQL Server 2022.
 - **API Documentation**: Use OpenAPI (Swagger) to document the API.

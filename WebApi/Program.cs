@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SampleDotnetCleanArchitecture.ApplicationBusiness.Applications;
@@ -9,18 +10,22 @@ using SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities;
 using SampleDotnetCleanArchitecture.EnterpriseBusiness.Interfaces;
 using SampleDotnetCleanArchitecture.EnterpriseBusiness.Services;
 using SampleDotnetCleanArchitecture.Infrastructure.Security;
-using SampleDotnetCleanArchitecture.Infrastructure.SqlServer;
+using SampleDotnetCleanArchitecture.Infrastructure.SqlServer.Interfaces;
+using SampleDotnetCleanArchitecture.Infrastructure.SqlServer.Repositories;
 using System.Text;
 using System.Text.Json.Serialization;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args)
+    ?? throw new ArgumentNullException(paramName: "builder");
 
-string connectionString = builder.Configuration["DATABASE_CONNECTION_STRING"];
+var connectionString = builder.Configuration["DATABASE_CONNECTION_STRING"]
+    ?? throw new ArgumentNullException(paramName: "DATABASE_CONNECTION_STRING");
+
 if (string.IsNullOrWhiteSpace(connectionString))
-    throw new ArgumentNullException("DATABASE_CONNECTION_STRING");
+    throw new ArgumentNullException(paramName: "DATABASE_CONNECTION_STRING");
 
 // just for study. In production, use environment variables and secrets
-string secretKey = builder.Configuration["SECRET_KEY"];
+var secretKey = builder.Configuration["SECRET_KEY"];
 if (string.IsNullOrWhiteSpace(secretKey))
     throw new ArgumentNullException("SECRET_KEY");
 
@@ -34,7 +39,13 @@ builder.Services.AddScoped<IClientApplication, ClientApplication>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IClientService, ClientService>();
 
-builder.Services.AddScoped<IDbConnectionProject>(sp => new DbConnectionProject(connectionString));
+builder.Services.AddScoped<IDatabaseRepository>(sp =>
+{
+    var sqlConnection = new SqlConnection(connectionString);
+    var databaseRepository = new DatabaseRepository(sqlConnection);
+    return databaseRepository;
+});
+
 
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
@@ -77,7 +88,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
 
-    // Configurar a segurança do Swagger
+    // Configurar a seguranï¿½a do Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
