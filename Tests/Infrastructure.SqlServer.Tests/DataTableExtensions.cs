@@ -14,9 +14,12 @@ namespace SampleDotnetCleanArchitecture.Infrastructure.SqlServer.Tests.Repositor
             PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (PropertyInfo prop in Props)
             {
+                if (string.IsNullOrWhiteSpace(prop.Name))
+                    continue;
+
                 //Setting column names as Property names
                 if (prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType));
+                    _ = dataTable.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType));
                 else
                     dataTable.Columns.Add(prop.Name, prop.PropertyType);
             }
@@ -25,6 +28,9 @@ namespace SampleDotnetCleanArchitecture.Infrastructure.SqlServer.Tests.Repositor
                 var values = new object[Props.Length];
                 for (int i = 0; i < Props.Length; i++)
                 {
+                    if (Props[i] == null)
+                        continue;
+
                     //inserting property values to datatable rows
                     values[i] = Props[i].GetValue(item, null);
                 }

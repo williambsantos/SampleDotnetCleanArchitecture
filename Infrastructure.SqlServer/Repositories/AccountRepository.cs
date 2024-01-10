@@ -69,7 +69,7 @@ WHERE a.UserName = @UserName
             parameters.AddParameter("@UserName", username);
 
             using var reader = await _databaseRepository.ExecuteReaderAsync(
-                commandText, CommandType.Text, parameters: null
+                commandText, CommandType.Text, parameters: parameters.ToArray()
             );
 
             var records = new List<AccountRecord>();
