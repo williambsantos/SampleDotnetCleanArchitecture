@@ -23,7 +23,7 @@ namespace SampleDotnetCleanArchitecture.ApplicationBusiness.Applications
 
         public async Task<AccountResponseDto?> GetByUserNameAsync(string userName)
         {
-            var user = await _accountService.GetUserAsync(userName);
+            var user = await _accountService.GetAsync(userName);
             if (null == user) return null;
             return new AccountResponseDto(user);
         }
@@ -36,7 +36,7 @@ namespace SampleDotnetCleanArchitecture.ApplicationBusiness.Applications
 
         public async Task<AccountCreateResponseDto> CreateAsync(AccountCreateRequestDto request)
         {
-            var user = await _accountService.CreateUserAsync(request.Username, request.Password, request.Roles, request.Claims);
+            var user = await _accountService.CreateAsync(request.Username, request.Password, request.Roles, request.Claims);
             return new AccountCreateResponseDto(user);
         }
 
