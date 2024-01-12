@@ -5,9 +5,9 @@
         public string UserName { get; private set; }
         public string PasswordHash { get; private set; }
         
-        public DateTime? CreationDate { get; set; } = DateTime.Now;
+        public DateTime? CreationDate { get; set; }
         public string? CreatedBy { get; set; } = string.Empty;
-        public DateTime? LastModifiedDate { get; set; } = DateTime.Now;
+        public DateTime? LastModifiedDate { get; set; }
         public string? LastModifiedBy { get; set; } = string.Empty;
 
         public ICollection<string> Roles { get; private set; } = new List<string>();

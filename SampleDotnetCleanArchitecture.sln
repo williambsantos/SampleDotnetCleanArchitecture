@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{8D66BD0B-90C6-477F-B448-36369AC29F84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\WebApi\WebApi.csproj", "{8D66BD0B-90C6-477F-B448-36369AC29F84}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationBusiness", "ApplicationBusiness\ApplicationBusiness.csproj", "{0DEAE6BA-2209-46DC-8292-6F89641AB38E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationBusiness", "src\ApplicationBusiness\ApplicationBusiness.csproj", "{0DEAE6BA-2209-46DC-8292-6F89641AB38E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseBusiness", "EnterpriseBusiness\EnterpriseBusiness.csproj", "{1FFB3920-724C-4DF1-B1ED-D004F3EA4887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterpriseBusiness", "src\EnterpriseBusiness\EnterpriseBusiness.csproj", "{1FFB3920-724C-4DF1-B1ED-D004F3EA4887}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Security", "Infrastructure.Security\Infrastructure.Security.csproj", "{AA0393C0-5C11-4C07-84FF-C83F5E4C0BEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Security", "src\Infrastructure.Security\Infrastructure.Security.csproj", "{AA0393C0-5C11-4C07-84FF-C83F5E4C0BEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.SqlServer", "Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{4557219E-CB5B-4C11-BD36-EF7C799EDF5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.SqlServer", "src\Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{4557219E-CB5B-4C11-BD36-EF7C799EDF5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseBusiness.Tests", "Tests\EnterpriseBusiness.Tests\EnterpriseBusiness.Tests.csproj", "{FD6AAE9A-F16E-4DCF-9096-505D37A1341E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseBusiness.Tests", "tests\EnterpriseBusiness.Tests\EnterpriseBusiness.Tests.csproj", "{FD6AAE9A-F16E-4DCF-9096-505D37A1341E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationBusiness.Tests", "Tests\ApplicationBusiness.Tests\ApplicationBusiness.Tests.csproj", "{5B04408B-D672-4210-9A92-8F4CC937A81C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationBusiness.Tests", "tests\ApplicationBusiness.Tests\ApplicationBusiness.Tests.csproj", "{5B04408B-D672-4210-9A92-8F4CC937A81C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Security.Tests", "Tests\Infrastructure.Security.Tests\Infrastructure.Security.Tests.csproj", "{B0543F81-5598-4E98-9F6C-5C415B47BAFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Security.Tests", "tests\Infrastructure.Security.Tests\Infrastructure.Security.Tests.csproj", "{B0543F81-5598-4E98-9F6C-5C415B47BAFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.SqlServer.Tests", "Tests\Infrastructure.SqlServer.Tests\Infrastructure.SqlServer.Tests.csproj", "{EC97E8BF-FFA2-4659-A0B7-FBA6FECB9027}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.SqlServer.Tests", "tests\Infrastructure.SqlServer.Tests\Infrastructure.SqlServer.Tests.csproj", "{EC97E8BF-FFA2-4659-A0B7-FBA6FECB9027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "Tests\WebApi.Tests\WebApi.Tests.csproj", "{D63D3085-9ED9-42E9-927F-ABC095ABF71A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "tests\WebApi.Tests\WebApi.Tests.csproj", "{D63D3085-9ED9-42E9-927F-ABC095ABF71A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{D4087261-0F6B-4CB3-B73C-A1A343442576}"
 	ProjectSection(SolutionItems) = preProject
