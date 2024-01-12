@@ -1,4 +1,5 @@
-﻿using SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities;
+﻿using FluentAssertions;
+using SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities;
 
 namespace SampleDotnetCleanArchitecture.EnterpriseBusiness.Tests.Entities;
 
@@ -7,15 +8,15 @@ public class AccountTest
     [Theory]
     [InlineData("name")]
     public void Construct_WithName_MustFillProperties(string name) =>
-        Assert.Equal(new Account(name).UserName, name);
+        new Account(name).UserName.Should().BeEquivalentTo(name);
 
     [Theory]
     [InlineData("name", "password")]
     public void Construct_WithNamePassword_MustFillProperties(string name, string password)
     {
         var actual = new Account(name, password);
-        Assert.Equal(actual.UserName, name);
-        Assert.Equal(password, actual.PasswordHash);
+        actual.UserName.Should().BeEquivalentTo(name);
+        actual.PasswordHash.Should().BeEquivalentTo(password);
     }
 
     [Theory]
@@ -26,10 +27,10 @@ public class AccountTest
         var claims = Enumerable.Repeat<AccountClaims>(AccountClaims.CLAIMS_USER_CAN_MODIFY, 3).ToList();
 
         var actual = new Account(name, password, roles, claims);
-        Assert.Equal(actual.UserName, name);
-        Assert.Equal(password, actual.PasswordHash);
-        Assert.True(roles.SequenceEqual(actual.Roles));
-        Assert.True(claims.SequenceEqual(actual.Claims));
+        actual.UserName.Should().BeEquivalentTo(name);
+        actual.PasswordHash.Should().BeEquivalentTo(password);
+        actual.Roles.SequenceEqual(roles).Should().BeTrue();
+        actual.Claims.SequenceEqual(claims).Should().BeTrue();
     }
 
     [Theory]
@@ -43,7 +44,10 @@ public class AccountTest
     public void Validate_Name_Password_MustHave_Message(string name, string password, string errorMessage)
     {
         var actual = new Account(name, password);
-
-        Assert.Throws<DomainValidationException>(() => actual.Validate()).Message.Contains(errorMessage);
+        actual
+            .Invoking(x => x.Validate())
+            .Should()
+            .Throw<DomainValidationException>()
+            .WithMessage(errorMessage);
     }
 }

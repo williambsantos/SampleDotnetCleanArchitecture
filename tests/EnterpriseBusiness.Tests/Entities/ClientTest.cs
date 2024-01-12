@@ -1,3 +1,4 @@
+using FluentAssertions;
 using SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities;
 
 namespace SampleDotnetCleanArchitecture.EnterpriseBusiness.Tests.Entities;
@@ -23,6 +24,11 @@ public class ClientTest
 
         var actual = new Client(firstName, lastName, birthDateDt);
 
-        Assert.Throws<DomainValidationException>(() => actual.Validate()).Message.Contains(errorMessage);
+        actual
+            .Invoking(x => x.Validate())
+            .Should()
+            .Throw<DomainValidationException>()
+            .WithMessage(errorMessage)
+        ;
     }
 }
