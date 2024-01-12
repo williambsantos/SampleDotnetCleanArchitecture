@@ -35,14 +35,16 @@ namespace SampleDotnetCleanArchitecture.EnterpriseBusiness.Entities
 
         public void Validate()
         {
-            if (string.IsNullOrEmpty(FirstName))
-                throw new Exception("FirstName is required");
+            if (string.IsNullOrWhiteSpace(FirstName))
+                throw new DomainValidationException("FirstName is required");
 
-            if (string.IsNullOrEmpty(LastName))
-                throw new Exception("LastName is required");
+            if (string.IsNullOrWhiteSpace(LastName))
+                throw new DomainValidationException("LastName is required");
 
-            if (BirthDate == DateTime.MinValue)
-                throw new Exception("BirthDate is required");
+            if (BirthDate == default ||
+                BirthDate == DateTime.MinValue ||
+                BirthDate == DateTime.MaxValue)
+                throw new DomainValidationException("BirthDate is required");
         }
     }
 }

@@ -50,10 +50,10 @@
 
         public void Validate()
         {
-            if (string.IsNullOrEmpty(UserName))
+            if (string.IsNullOrWhiteSpace(UserName))
                 throw new DomainValidationException("Username is required");
 
-            if (string.IsNullOrEmpty(PasswordHash))
+            if (string.IsNullOrWhiteSpace(PasswordHash))
                 throw new DomainValidationException("Password is required");
         }
     }
