@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Security", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.SqlServer", "src\Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{4557219E-CB5B-4C11-BD36-EF7C799EDF5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B9E3033C-18E0-418D-A6C8-953F434B55A4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnterpriseBusiness.Tests", "tests\EnterpriseBusiness.Tests\EnterpriseBusiness.Tests.csproj", "{FD6AAE9A-F16E-4DCF-9096-505D37A1341E}"
 EndProject
