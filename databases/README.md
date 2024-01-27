@@ -12,7 +12,7 @@ docker compose up -d
 
 ```
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SqlServer2022!" `
-  -p 31433:1433 `
+  -p 1433:1433 `
   --name sqlserver2022 `
   --hostname sqlserver2022 `
    -v "$(pwd)/mssql-data:/var/opt/mssql/data" `
@@ -24,7 +24,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SqlServer2022!" `
 
 ```
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SqlServer2022!" \
-  -p 31433:1433 \
+  -p 1433:1433 \
   --name sqlserver2022 \
   --hostname sqlserver2022 \
    -v "$(pwd)/mssql-data:/var/opt/mssql/data" \
